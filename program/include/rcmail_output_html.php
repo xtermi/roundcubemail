@@ -1583,7 +1583,7 @@ class rcmail_output_html extends rcmail_output
         // create HTML table with two cols
         $table = new html_table(array('cols' => 2));
 
-        $table->add('title', html::label('rcmloginuser', html::quote($this->app->gettext('username'))));
+        $table->add('title', html::label('rcmloginuser', html::quote($this->app->gettext('email'))));
         $table->add('input', $input_user->show(rcube_utils::get_input_value('_user', rcube_utils::INPUT_GPC)));
 
         $table->add('title', html::label('rcmloginpwd', html::quote($this->app->gettext('password'))));

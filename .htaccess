@@ -1,3 +1,9 @@
+# rewrite non-https to https://
+RewriteEngine On
+RewriteCond %{HTTPS} !=on
+RewriteRule /?(.*) https://webmail.ipax.at/$1 [R=301]
+#RewriteRule /?new/(.*) https://webmail.ipax.at/$1 [R=301]
+
 # AddDefaultCharset	UTF-8
 AddType text/x-component .htc
 
@@ -6,9 +12,9 @@ php_flag	display_errors	Off
 php_flag	log_errors	On
 # php_value	error_log	logs/errors
 
-php_value	upload_max_filesize	5M
-php_value	post_max_size		6M
-php_value	memory_limit		64M
+php_value	upload_max_filesize	50M
+php_value	post_max_size		60M
+php_value	memory_limit		256M
 
 php_flag	zlib.output_compression		Off
 php_flag	magic_quotes_gpc		Off
@@ -33,6 +39,7 @@ RewriteRule ^favicon\.ico$ skins/larry/images/favicon.ico
 RewriteRule \.git - [F]
 RewriteRule ^/?(README(.md)?|INSTALL|LICENSE|CHANGELOG|UPGRADING)$ - [F]
 RewriteRule ^/?(SQL|bin) - [F]
+RewriteRule ^/?(cleanup.sh)$ - [F]
 </IfModule>
 
 <IfModule mod_deflate.c>
